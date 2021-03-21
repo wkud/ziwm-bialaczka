@@ -1,6 +1,4 @@
 leukaemia_classes = [
-    'IDKlasy',
-    'ID',
     'Postac nie T i nie B',
     'Postac T',
     'Postac B',
@@ -23,7 +21,9 @@ leukaemia_classes = [
     'Bialaczka komorek wielkojadrzastych',
 ]
 
-leukaemia_features = {
+leukaemia_features = [
+    'IDKlasy',
+    'ID',
     'Temperatura',
     'Anemia',
     'Stopien krwawienia',
@@ -44,6 +44,6 @@ leukaemia_features = {
     'Glowne komorki w szpiku',
     'Poziom limfocytow',
     'Reakcja'
-}
+]
 
 csv_file_path = 'data/bialaczka.csv'

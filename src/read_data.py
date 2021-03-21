@@ -5,10 +5,10 @@ import math
 def load_data(csv_file, columns):
     data = pandas.read_csv(csv_file, sep=';', usecols=[i for i in range(22)])
     data.columns = columns
-    featureID = 1
+    classID = 1
     for index, row in data.iterrows():
         if math.isnan(row['IDKlasy']):
-            data.at[index, 'IDKlasy'] = featureID
+            data.at[index, 'IDKlasy'] = classID
         else:
-            featureID = row['IDKlasy']
+            classID = row['IDKlasy']
     return (data)
