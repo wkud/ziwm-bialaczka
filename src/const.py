@@ -22,8 +22,8 @@ leukaemia_classes = [
 ]
 
 leukaemia_features = [
-    'IDKlasy',
-    'ID',
+    # 'IDKlasy',
+    # 'ID',
     'Temperatura',
     'Anemia',
     'Stopien krwawienia',
