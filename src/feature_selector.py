@@ -1,6 +1,5 @@
-import numpy 
-import pandas
-from sklearn.feature_selection import chi2, SelectKBest
+import numpy
+from sklearn.feature_selection import chi2
 from const import csv_file_path, leukaemia_features
 import math
 
@@ -22,14 +21,6 @@ def get_features_ranking(print_for_latex=False):
     samples_x_features = dataset[1:, 2:-1]
     # class id column only - samples labeled by class ids
     class_labels = __create_class_labels(dataset[1:, 0])
-
-    # feature_selection = SelectKBest(score_func=chi2, k=2)
-    # selected_features = feature_selection.fit_transform(
-    #     samples_x_features, class_labels)
-    # print('Scores:')
-    # print(feature_selection.scores_)
-
-    # scores = feature_selection.scores_
 
     scores, p_values = chi2(samples_x_features, class_labels)
 
