@@ -35,7 +35,7 @@ def predict(data, feature_ranking):
                 number_of_iterations = 0
 
                 # take n best features (with increasing n) in order to find optimal n value (n = top_features_count)
-                top_features = data.samples_x_features[:, 0:top_features_count]  # TODO kolumny wg rankingu cech
+                top_features = feature_ranking.sorted_samples_x_features[:, 0:top_features_count] 
 
                 # perform experiment for given parameters
                 for train, test in k_folds.split(top_features, data.class_labels):
