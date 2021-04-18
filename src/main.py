@@ -4,6 +4,6 @@ from predictor import predict
 
 data = load_data() # returns data object with 'samples_x_features' and 'class_labels' fields
 ranking = get_features_ranking(data)
-predict(data, ranking)
+prediction_results = predict(data, ranking)
 
 

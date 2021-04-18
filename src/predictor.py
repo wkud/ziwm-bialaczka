@@ -67,5 +67,4 @@ def predict(data, feature_ranking):
             f'[{len(results) - j}] Mean score for n_neighbors={row["n_neighbors"]}, metric={row["metric"]}, '
             f'n_features={row["n_features"]}: {row["mean_accuracy"]}')
 
-
-
+    return results
