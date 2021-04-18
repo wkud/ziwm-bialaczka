@@ -31,11 +31,11 @@ def predict(data, feature_ranking):
             for metric in metrics:
                 knn = KNeighborsClassifier(n_neighbors=neighbor_count, metric=metric)
                 current_iteration_scores = []
-                current_iteration_confusion_matrices = numpy.zeros(shape=(5, 5))
+                current_iteration_confusion_matrices = numpy.zeros(shape=(20, 20))
                 number_of_iterations = 0
 
                 # take n best features (with increasing n) in order to find optimal n value (n = top_features_count)
-                top_features = data.samples_x_features[:, 0:top_features_count] 
+                top_features = data.samples_x_features[:, 0:top_features_count]  # TODO kolumny wg rankingu cech
 
                 # perform experiment for given parameters
                 for train, test in k_folds.split(top_features, data.class_labels):
@@ -62,9 +62,10 @@ def predict(data, feature_ranking):
     j = 0
     print('Best mean models scoreboard:')
     for i, row in results.iterrows():
-        j = j + 1
+        j += 1
+        # 'top_feature_count', 'neighbor_count', 'metric', 'scores', 'mean_accuracy', 'mean_confusion_matrix']
         print(
-            f'[{len(results) - j}] Mean score for n_neighbors={row["n_neighbors"]}, metric={row["metric"]}, '
-            f'n_features={row["n_features"]}: {row["mean_accuracy"]}')
+            f'[{len(results) - j}] Mean score for neighbor_count={row["neighbor_count"]}, metric={row["metric"]}, '
+            f'top_feature_count={row["top_feature_count"]}: {row["mean_accuracy"]}')
 
     return results
