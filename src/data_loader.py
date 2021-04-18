@@ -27,3 +27,5 @@ class Data: # class created for convienient storing data
     def __init__(self, samples_x_features, class_labels): # constructor
         self.samples_x_features = samples_x_features
         self.class_labels = class_labels
+        
+        self.sample_count = len(class_labels)
