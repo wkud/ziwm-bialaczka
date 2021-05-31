@@ -7,10 +7,11 @@ from sklearn.neighbors import KNeighborsClassifier
 
 def predict(data, feature_ranking):
     # alpha = 0.05
-    # for index, row in features_with_values.iterrows():
-    #     p_value = row['P_values']
+    # temp_p_values = list(feature_ranking.p_values)
+    # for i in range(feature_ranking.feature_count-1, -1, -1):
+    #     p_value = temp_p_values[i] # read-only
     #     if p_value > alpha:
-    #         features_with_values.drop(index, inplace=True)
+    #         feature_ranking.drop_entry(i)
 
     # print(features_with_values.sort_values('Scores', ascending=False).round(3))
 
@@ -67,5 +68,13 @@ def predict(data, feature_ranking):
         print(
             f'[{len(results) - j}] Mean score for neighbor_count={row["neighbor_count"]}, metric={row["metric"]}, '
             f'top_feature_count={row["top_feature_count"]}: {row["mean_accuracy"]}')
+
+        if row["metric"] == 'manhattan' and row["top_feature_count"] == 19 and row["neighbor_count"] == 9:
+            print('\nMean confusion matrix for the best prediction:')
+            print(row['mean_confusion_matrix'])
+
+        # report data for graph drawing
+        # mean_accuracy = str(row["mean_accuracy"]).replace('.', ',')
+        # print(f'[{len(results) - j}] {row["top_feature_count"]} {row["neighbor_count"]} {row["metric"]} {mean_accuracy}')
 
     return results

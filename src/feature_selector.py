@@ -1,4 +1,4 @@
-import numpy
+import numpy 
 from sklearn.feature_selection import chi2
 from const import csv_file_path, leukaemia_features
 import math
@@ -11,6 +11,13 @@ class Ranking:
         self.p_values = p_values
         self.sorted_samples_x_features = sorted_samples_x_features
         self.feature_count = feature_count
+
+    def drop_entry(self, index):
+        self.feature_ids.pop(index)
+        self.chi2_scores.pop(index)
+        self.p_values.pop(index)
+        # self.sorted_samples_x_features.pop_column(index) # numpy.dataset # drop column at (index)
+        self.feature_count -= 1
 
 
 def __sort_by_score(samples_x_features, scores):

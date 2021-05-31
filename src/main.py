@@ -7,4 +7,4 @@ from tstudent import tstudent
 data = load_data()
 ranking = get_features_ranking(data)
 prediction_results = predict(data, ranking)
-tstudent(prediction_results)
+# tstudent(prediction_results)
